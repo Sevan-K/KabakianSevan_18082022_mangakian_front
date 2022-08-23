@@ -1,0 +1,15 @@
+mat-card {
+    width: 75%;
+    margin: 2rem auto;
+}
+.landing-page-action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// cancel default material style
+.mat-card > .mat-card-actions:last-child {
+    margin: 0;
+    padding: 0;
+}
