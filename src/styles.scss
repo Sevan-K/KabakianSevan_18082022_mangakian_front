@@ -1,4 +1,52 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    scroll-behavior: smooth;
+    // position:relative;
+}
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+body {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    /*  // adding the background
+    background-image: url("./assets/images/blurred-bg.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed; */
+    box-sizing: border-box;
+    overflow-x: hidden;
+    // font-size: 15px;
+}
+
+ul {
+    list-style: none;
+}
+button {
+    border: none;
+}
+* > img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+a {
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
+    &:hover {
+        text-decoration: underline;
+    }
+}

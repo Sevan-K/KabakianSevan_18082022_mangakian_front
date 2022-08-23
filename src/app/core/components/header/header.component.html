@@ -1,19 +1,21 @@
 <mat-toolbar color="primary">
-    <mat-toolbar-row>
-        <span>Mangakian</span>
-        <button
-            mat-icon-button
-            class="example-icon favorite-icon"
-            aria-label="Example icon-button with menu icon"
-        >
+    <mat-toolbar-row class="header-top-row">
+        <span class="img-wrapper">
+            <img
+                src="../../../../assets/logos/logogris-removebg-preview.png"
+                alt="Logo Mangakian"
+            />
+        </span>
+
+        <button mat-icon-button aria-label="Login button" (click)="onLogin()">
             <mat-icon>login</mat-icon>
         </button>
     </mat-toolbar-row>
     <mat-toolbar-row>
-        <nav>
-            <a routerLink="">All Manga</a>
-            <a routerLink="">My Manga</a>
-            <a routerLink="">Add Manga</a>
+        <nav class="nav-links">
+            <a routerLink="">Bibliothèque</a>
+            <a routerLink="">Ma collection</a>
+            <a routerLink="">Ajout</a>
         </nav>
     </mat-toolbar-row>
 </mat-toolbar>

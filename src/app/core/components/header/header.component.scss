@@ -1,0 +1,17 @@
+.header-top-row {
+    justify-content: space-between;
+    height: clamp(6rem, 5rem + 7vw, 12rem);
+    // padding-top: 0.5rem;
+}
+
+.img-wrapper {
+    width: clamp(10rem, 9rem + 7vw, 20rem);
+    height: 100%;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-evenly;
+    flex: 1 1 100%;
+    font-size: 1.5rem;
+}
