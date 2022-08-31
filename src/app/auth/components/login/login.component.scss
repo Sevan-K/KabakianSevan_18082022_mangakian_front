@@ -1,0 +1,24 @@
+mat-card {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+mat-card-title {
+    flex: 1 1 100%;
+}
+
+mat-form-field {
+    width: 40%;
+    margin: 0 5%;
+    // min-width: 20rem;
+}
+
+mat-card-actions {
+    flex: 1 1 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
