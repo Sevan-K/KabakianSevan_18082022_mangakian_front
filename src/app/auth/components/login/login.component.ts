@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import {
+    AbstractControl,
     FormBuilder,
     FormControl,
     FormGroup,
@@ -32,25 +33,43 @@ export class LoginComponent implements OnInit {
     }
 
     // method to init formconrols of the login form
-    initFormControls(): void {
-        this.emailCtrl = this.formBuilder.control("", Validators.required);
-        this.passwordCtrl = this.formBuilder.control("", Validators.required);
+    private initFormControls(): void {
+        this.emailCtrl = this.formBuilder.control("", [
+            Validators.required,
+            Validators.email,
+        ]);
+        this.passwordCtrl = this.formBuilder.control("", [
+            Validators.required,
+            Validators.minLength(8),
+        ]);
     }
 
     // method to init the login form group
-    initFormGroup(): void {
+    private initFormGroup(): void {
         this.loginForm = this.formBuilder.group({
             email: this.emailCtrl,
             password: this.passwordCtrl,
         });
     }
 
+    // method to get and display errors on template
+    getFormCtrlErrorText(ctrl: AbstractControl): string {
+        if (ctrl.hasError("required")) {
+            return "Ce champs est requis.";
+        } else if (ctrl.hasError("email")) {
+            return "Renseignez une adresse mail valide.";
+        } else if (ctrl.hasError("minlength")) {
+            return "Le mot de passe doit contenir au moins 8 caractères.";
+        } else {
+            return "Ce champs contient une erreur 😱 ";
+        }
+    }
+
     // method to handle login actions
     onLogin() {
         console.log(this.loginForm.value);
-
         // this.authService.login();
         // TODO
-        // this.router.navigateByUrl("");
+        this.router.navigateByUrl("");
     }
 }

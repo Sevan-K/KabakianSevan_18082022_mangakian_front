@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { delay, interval, take, tap } from "rxjs";
 // loaded once with the app
 @Injectable({ providedIn: "root" })
 
@@ -14,6 +15,12 @@ export class AuthService {
 
     // method to login
     login(): void {
-        this.token = "BulshitTokenForDevApp";
+        // passer le loader à true
+        interval(1).pipe(
+            take(1),
+            tap(() => (this.token = "BulshitTokenForDevApp")),
+            delay(2000)
+            // passer le loader à false
+        ).subscribe;
     }
 }
