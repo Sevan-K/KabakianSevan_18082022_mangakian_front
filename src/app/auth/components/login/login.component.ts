@@ -7,7 +7,9 @@ import {
     Validators,
 } from "@angular/forms";
 import { Router } from "@angular/router";
+import { interval, Observable, of, switchMap, take, tap } from "rxjs";
 import { AuthService } from "src/app/core/services/auth.service";
+import { LoaderService } from "src/app/core/services/loader.service";
 
 @Component({
     selector: "app-login",
@@ -21,15 +23,20 @@ export class LoginComponent implements OnInit {
     emailCtrl!: FormControl;
     passwordCtrl!: FormControl;
 
+    // loading observable
+    loading$!: Observable<boolean>;
+
     constructor(
         private authService: AuthService,
         private router: Router,
-        private formBuilder: FormBuilder
+        private formBuilder: FormBuilder,
+        private loaderService: LoaderService
     ) {}
 
     ngOnInit(): void {
         this.initFormControls();
         this.initFormGroup();
+        this.loading$ = this.loaderService.loading$;
     }
 
     // method to init formconrols of the login form
@@ -68,8 +75,14 @@ export class LoginComponent implements OnInit {
     // method to handle login actions
     onLogin() {
         console.log(this.loginForm.value);
-        // this.authService.login();
-        // TODO
-        this.router.navigateByUrl("");
+        // call login function to get the token
+        this.authService.login();
+        interval(1)
+            .pipe(
+                take(1),
+                switchMap(() => this.loaderService.simulateLoading$()),
+                tap(() => this.router.navigateByUrl(""))
+            )
+            .subscribe();
     }
 }

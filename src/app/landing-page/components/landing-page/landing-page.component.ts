@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { LoaderService } from "src/app/core/services/loader.service";
 
 @Component({
     selector: "app-landing-page",
@@ -6,11 +7,11 @@ import { Component, OnInit } from "@angular/core";
     styleUrls: ["./landing-page.component.scss"],
 })
 export class LandingPageComponent implements OnInit {
-    constructor() {}
+    constructor(private loaderService: LoaderService) {}
 
     ngOnInit(): void {}
 
-    // function to visit library
+    // method to visit library
     onVisit() {
         console.log("function to visit library called");
     }
