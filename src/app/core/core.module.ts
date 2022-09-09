@@ -5,9 +5,10 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import * as fr from '@angular/common/locales/fr';
 import { SharedModule } from '../shared/shared.module';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, NotFoundComponent],
   providers: [{ provide: LOCALE_ID, useValue: 'fr-FR' }],
   imports: [CommonModule, RouterModule, HttpClientModule, SharedModule],
   exports: [HeaderComponent],
