@@ -3,6 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { AuthModule } from "./auth/auth.module";
 import { LoginComponent } from "./auth/components/login/login.component";
 import { NotFoundComponent } from "./core/components/not-found/not-found.component";
+import { AuthGard } from "./core/guards/auth.guard";
 import { LandingPageComponent } from "./landing-page/components/landing-page/landing-page.component";
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
             import("./add-form/add-form.module").then(
                 (module) => module.AddFormModule
             ),
+        canActivate: [AuthGard],
     },
     {
         path: "library",
@@ -27,6 +29,7 @@ const routes: Routes = [
             import("./manga-library/manga-library.module").then(
                 (module) => module.MangaLibraryModule
             ),
+        canActivate: [AuthGard],
     },
     { path: "**", pathMatch: "full", component: NotFoundComponent },
 ];
